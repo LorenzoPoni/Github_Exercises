@@ -14,11 +14,11 @@ class Brano:
 
     @property
     def autore(self) -> str:
-        return self.autore
+        return self._autore
 
     @property
     def durata(self) -> int:
-        return self.durata
+        return self._durata
 
     # Setters
 
@@ -45,4 +45,39 @@ class Brano:
     # Method to return all song's information
 
     def __str__(self) -> str:
-        return f"{self.titolo} - {self.autore} ({self.durata} secondi)"
+        return f"{self.titolo} - {self.autore} - ({self.durata} secondi)"
+
+class CD:
+    def __init__(self, titolo, autore):
+        self.titolo = titolo
+        self.autore = autore
+        self.lista_brani = []
+
+    # Methods to add and remove songs from the CD
+    def aggiungi_brano(self, brano: Brano) -> str:
+        if brano in self.lista_brani:
+            return f"Brano {brano.titolo} già presente nel CD"
+        else:
+            self.lista_brani.append(brano)
+            return f"Brano {brano.titolo} aggiunto"
+
+    def rimuovi_brano(self, brano: Brano) -> str:
+        if brano in self.lista_brani:
+            self.lista_brani.remove(brano)
+            return f"Brano {brano.titolo} rimosso"
+        else:
+            return f"Brano {brano.titolo} non trovato"
+
+    # Method to calculate the total duration of the CD
+
+    def durata_complessiva(self) -> int:
+        durata_totale = 0
+        for brano in self.lista_brani:
+            durata_totale += brano.durata
+
+        return durata_totale
+
+    # Method to return all CD's information
+
+    def __str__(self) -> str:
+        return f"{self.titolo} - {self.autore} - ({len(self.lista_brani)} brani)"
