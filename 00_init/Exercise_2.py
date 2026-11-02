@@ -33,3 +33,19 @@ class Biblioteca:
 
     def get_numero_libri(self) -> int:
         return len(self.lista_libri)
+
+if __name__ == "__main__":
+    libro1 = Libro("J.K. Rowling", "Harry Potter e la Pietra Filosofale", 1997, "Bloomsbury", 223)
+    libro2 = Libro("J.R.R. Tolkien", "Il Signore degli Anelli", 1954, "Allen & Unwin", 1216)
+    libro3 = Libro("George Orwell", "1984", 1949, "Secker & Warburg", 328)
+
+    biblioteca = Biblioteca("Biblioteca Comunale")
+
+    print(biblioteca.aggiungi_libro(libro1))
+    print(biblioteca.aggiungi_libro(libro2))
+    print(biblioteca.aggiungi_libro(libro3))
+
+    print(biblioteca.ricerca_libro("1984"))
+    print(biblioteca.ricerca_libro("Il Grande Gatsby"))
+
+    print(f"Numero di libri nella biblioteca: {biblioteca.get_numero_libri()}")
