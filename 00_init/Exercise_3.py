@@ -42,4 +42,22 @@ class Scuola:
 
     def get_numero_studenti(self) -> int:
         return len(self.lista_studenti)
-    
+
+if __name__ == "__main__":
+    studente1 = Studente("Mario", "Rossi", 15, "Roma")
+    studente2 = Studente("Luca", "Bianchi", 17, "Milano")
+    studente3 = Studente("Giulia", "Verdi", 16, "Napoli")
+
+    scuola = Scuola("Liceo Scientifico")
+
+    print(scuola.aggiungi_studente(studente1))
+    print(scuola.aggiungi_studente(studente2))
+    print(scuola.aggiungi_studente(studente3))
+
+    print(scuola.ricerca_per_cognome("Bianchi"))
+    print(scuola.ricerca_per_cognome("Neri"))
+
+    print(scuola.ricerca_per_età(16))
+    print(scuola.ricerca_per_età(18))
+
+    print(f"Numero di studenti nella scuola: {scuola.get_numero_studenti()}")
