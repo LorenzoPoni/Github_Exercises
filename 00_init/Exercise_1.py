@@ -1,3 +1,5 @@
+from typing import List, Optional
+
 # Class Brano
 
 class Brano:
@@ -68,6 +70,10 @@ class CD:
         else:
             return f"Brano {brano.titolo} non trovato"
 
+    def get_lista_brani(self) -> list:
+        for brano in self.lista_brani:
+            print(brano.__str__())
+
     # Method to calculate the total duration of the CD
 
     def durata_complessiva(self) -> int:
@@ -81,3 +87,30 @@ class CD:
 
     def __str__(self) -> str:
         return f"{self.titolo} - {self.autore} - ({len(self.lista_brani)} brani)"
+
+if __name__ == "__main__":
+
+    brano1 = Brano("Beggin'", "Maneskin", 180)
+    brano2 = Brano("L'Altra Dimensione", "Måneskin", 200)
+    brano3 = Brano("ZITTI E BUONI", "Måneskin", 210)
+
+    print(brano1.short_song())
+    print(brano1.__str__())
+
+    cd1 = CD("Chosen", "Måneskin")
+    print(cd1.__str__())
+
+    cd1.aggiungi_brano(brano1)
+    cd1.aggiungi_brano(brano2)
+    cd1.aggiungi_brano(brano3)
+
+    print(cd1.durata_complessiva())
+
+    print(cd1.get_lista_brani())
+
+    cd1.rimuovi_brano(brano1)
+    cd1.rimuovi_brano(brano2)
+    cd1.rimuovi_brano(brano3)
+
+    print(cd1.get_lista_brani())
+
